@@ -13,8 +13,10 @@ def model_fitting(x, y, test_size=0.33, seed=7, pfi_fitted_models=''):
     model = MLPClassifier()
     model.fit(x_train, y_train)
 
-    assert os.path.exists(pfi_fitted_models)
-    pickle.dump(model, open(pfi_fitted_models, 'wb'))
+    if not os.path.exists(pfi_fitted_models):
+        raise ValueError
+
+    pickle.dump(model.get_params(), open(pfi_fitted_models, 'wb'))
 
     scored_model_assessment = model.score(x_test, y_test)
 
@@ -22,6 +24,10 @@ def model_fitting(x, y, test_size=0.33, seed=7, pfi_fitted_models=''):
 
 
 def apply_model(pfi_fitted_models, x):
-    model = pickle.load(open(pfi_fitted_models, 'rb'))
+    """ apply a fitted model whose parameters are saved in the given file """
+    model_params = pickle.load(open(pfi_fitted_models, 'rb'))
+    model = MLPClassifier()
+    model.set_params(**model_params)
     y = model.predict(x)
+    model.predict_proba(x)
     return y
