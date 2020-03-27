@@ -31,3 +31,4 @@ Input data:
 Output data:
 
 - Triage level, for now we set 5 levels of severity. 1 least severe, 5 most servere.
+- Confidence (%)
