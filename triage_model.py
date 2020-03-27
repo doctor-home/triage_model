@@ -14,7 +14,7 @@ def model_fitting(x, y, test_size=0.33, seed=7, pfi_fitted_models=''):
     model.fit(x_train, y_train)
 
     if not os.path.exists(pfi_fitted_models):
-        raise ValueError
+        raise ValueError()
 
     pickle.dump(model.get_params(), open(pfi_fitted_models, 'wb'))
 
