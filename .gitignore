@@ -1,6 +1,7 @@
 .idea
 .vscode
 .ipynb_checkpoints
+.finalized_model.sav
 
 venv
 env
