@@ -1,6 +1,6 @@
 .idea
 .vscode
-
+.ipynb_checkpoints
 
 venv
 env
