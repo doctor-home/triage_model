@@ -1,5 +1,38 @@
 # Model
 
+## Build and Run Docker Contrainer
+The Docker container can be build with the following command:
+```
+$ docker image build -t triage_predictor .
+```
+
+Finally, you can run the docker container with:
+```
+$ docker run -p 5000:5000 triage_predictor
+```
+
+## Prediction Call to Flask
+You can get a prediction from the Triage model, by sending it a JSON in the following format:
+``` 
+{ 
+  "patientID" : ... , #string
+  "heart_beat" : ..., #int
+  "oxygenation" : ..., #float
+  "temperature" : ..., #float
+  "breathing_rate" : ..., #int
+  "preconditions" : ..., #string (None, Hypertension, Asthma, Arthritis, Cancer)
+  "fitness" : ..., #int [1,10]
+  "smoker" : ... #bool
+}
+``` 
+
+``` 
+$ curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"patientID" : "111111", "heart_beat" : 50, "oxygenation" : 0.99, "temperature" : 36.5, "breathing_rate" : 18, "preconditions" : "None", "fitness" : 9, "smoker" : false }' \
+  http://0.0.0.0:5000/predict
+``` 
+
 
 ### Data
 
