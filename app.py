@@ -43,7 +43,7 @@ def index():
 @app.route("/predict", methods=["POST"])
 def predict():
     """
-    Predicts the emotion of a speech sample. The speech file is automatically extracted from the POST request
+    Predicts the Triage level of patient.
     return:
         json response containing the prediciton
     """

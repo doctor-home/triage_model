@@ -9,8 +9,7 @@ RUN apt-get update \
   && pip3 install --upgrade pip
 
 RUN  apt-get -y update \
-  && apt-get install -y zip unzip \
-  && rm -rf /var/lib/apt/lists/*
+  && apt-get install -y zip unzip
 
 # Copy the files to docker image
 COPY requirements.txt requirements.txt
